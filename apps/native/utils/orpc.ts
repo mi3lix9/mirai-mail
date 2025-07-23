@@ -8,7 +8,9 @@ import type { appRouter } from "../../server/src/routers";
 
 export const queryClient = new QueryClient({
 	queryCache: new QueryCache({
-		onError: (_error) => {},
+		onError: (_error) => {
+			// Error handling can be added here if needed
+		},
 	}),
 });
 

@@ -50,6 +50,7 @@ function RootDocument() {
 
 	return (
 		<html className="dark" lang="en">
+			{/** biome-ignore lint/style/noHeadElement: root document */}
 			<head>
 				<HeadContent />
 			</head>
