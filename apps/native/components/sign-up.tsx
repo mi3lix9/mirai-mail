@@ -27,8 +27,8 @@ export function SignUp() {
 				password,
 			},
 			{
-				onError: (error) => {
-					setError(error.error?.message || "Failed to sign up");
+				onError: (apiError) => {
+					setError(apiError.error?.message || "Failed to sign up");
 					setIsLoading(false);
 				},
 				onSuccess: () => {

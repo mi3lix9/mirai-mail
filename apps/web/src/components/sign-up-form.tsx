@@ -66,8 +66,10 @@ export default function SignUpForm({
 				onSubmit={(e) => {
 					e.preventDefault();
 					e.stopPropagation();
-					form.handleSubmit().catch(() => {
-						/* ignore */
+					form.handleSubmit().catch((error) => {
+						toast.error(
+							error instanceof Error ? error.message : "Failed to sign up"
+						);
 					});
 				}}
 			>

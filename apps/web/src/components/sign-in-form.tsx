@@ -63,7 +63,11 @@ export default function SignInForm({
 				onSubmit={(e) => {
 					e.preventDefault();
 					e.stopPropagation();
-					form.handleSubmit().catch(() => {});
+					form.handleSubmit().catch((error) => {
+						toast.error(
+							error instanceof Error ? error.message : "Failed to sign in"
+						);
+					});
 				}}
 			>
 				<div>

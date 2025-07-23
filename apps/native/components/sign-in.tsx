@@ -25,8 +25,8 @@ export function SignIn() {
 				password,
 			},
 			{
-				onError: (error) => {
-					setError(error.error?.message || "Failed to sign in");
+				onError: (apiError) => {
+					setError(apiError.error?.message || "Failed to sign in");
 					setIsLoading(false);
 				},
 				onSuccess: () => {
