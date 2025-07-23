@@ -1,5 +1,3 @@
-import { authClient } from "@/lib/auth-client";
-import { queryClient } from "@/utils/orpc";
 import { useState } from "react";
 import {
 	ActivityIndicator,
@@ -8,6 +6,8 @@ import {
 	TouchableOpacity,
 	View,
 } from "react-native";
+import { authClient } from "@/lib/auth-client";
+import { queryClient } from "@/utils/orpc";
 
 export function SignUp() {
 	const [name, setName] = useState("");
@@ -40,58 +40,58 @@ export function SignUp() {
 				onFinished: () => {
 					setIsLoading(false);
 				},
-			},
+			}
 		);
 	};
 
 	return (
-		<View className="mt-6 p-4 bg-card rounded-lg border border-border">
-			<Text className="text-lg font-semibold text-foreground mb-4">
+		<View className="mt-6 rounded-lg border border-border bg-card p-4">
+			<Text className="mb-4 font-semibold text-foreground text-lg">
 				Create Account
 			</Text>
 
 			{error && (
-				<View className="mb-4 p-3 bg-destructive/10 rounded-md">
+				<View className="mb-4 rounded-md bg-destructive/10 p-3">
 					<Text className="text-destructive text-sm">{error}</Text>
 				</View>
 			)}
 
 			<TextInput
-				className="mb-3 p-4 rounded-md bg-input text-foreground border border-input"
-				placeholder="Name"
-				value={name}
+				className="mb-3 rounded-md border border-input bg-input p-4 text-foreground"
 				onChangeText={setName}
+				placeholder="Name"
 				placeholderTextColor="#9CA3AF"
+				value={name}
 			/>
 
 			<TextInput
-				className="mb-3 p-4 rounded-md bg-input text-foreground border border-input"
-				placeholder="Email"
-				value={email}
-				onChangeText={setEmail}
-				placeholderTextColor="#9CA3AF"
-				keyboardType="email-address"
 				autoCapitalize="none"
+				className="mb-3 rounded-md border border-input bg-input p-4 text-foreground"
+				keyboardType="email-address"
+				onChangeText={setEmail}
+				placeholder="Email"
+				placeholderTextColor="#9CA3AF"
+				value={email}
 			/>
 
 			<TextInput
-				className="mb-4 p-4 rounded-md bg-input text-foreground border border-input"
-				placeholder="Password"
-				value={password}
+				className="mb-4 rounded-md border border-input bg-input p-4 text-foreground"
 				onChangeText={setPassword}
+				placeholder="Password"
 				placeholderTextColor="#9CA3AF"
 				secureTextEntry
+				value={password}
 			/>
 
 			<TouchableOpacity
-				onPress={handleSignUp}
+				className="flex-row items-center justify-center rounded-md bg-primary p-4"
 				disabled={isLoading}
-				className="bg-primary p-4 rounded-md flex-row justify-center items-center"
+				onPress={handleSignUp}
 			>
 				{isLoading ? (
-					<ActivityIndicator size="small" color="#fff" />
+					<ActivityIndicator color="#fff" size="small" />
 				) : (
-					<Text className="text-primary-foreground font-medium">Sign Up</Text>
+					<Text className="font-medium text-primary-foreground">Sign Up</Text>
 				)}
 			</TouchableOpacity>
 		</View>
