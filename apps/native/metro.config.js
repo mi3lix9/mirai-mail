@@ -5,12 +5,12 @@ const { withNativeWind } = require("nativewind/metro");
 const path = require("node:path");
 
 const config = withTurborepoManagedCache(
-  withMonorepoPaths(
-    withNativeWind(getDefaultConfig(__dirname), {
-      input: "./global.css",
-      configPath: "./tailwind.config.js",
-    })
-  )
+	withMonorepoPaths(
+		withNativeWind(getDefaultConfig(__dirname), {
+			input: "./global.css",
+			configPath: "./tailwind.config.js",
+		})
+	)
 );
 
 config.resolver.unstable_enablePackageExports = true;
@@ -28,20 +28,20 @@ module.exports = config;
  * @returns {import('expo/metro-config').MetroConfig}
  */
 function withMonorepoPaths(innerConfig) {
-  // biome-ignore lint/nursery/noGlobalDirnameFilename: Metro is not Vite
-  const projectRoot = __dirname;
-  const workspaceRoot = path.resolve(projectRoot, "../..");
+	// biome-ignore lint/nursery/noGlobalDirnameFilename: Metro is not Vite
+	const projectRoot = __dirname;
+	const workspaceRoot = path.resolve(projectRoot, "../..");
 
-  // #1 - Watch all files in the monorepo
-  innerConfig.watchFolders = [workspaceRoot];
+	// #1 - Watch all files in the monorepo
+	innerConfig.watchFolders = [workspaceRoot];
 
-  // #2 - Resolve modules within the project's `node_modules` first, then all monorepo modules
-  innerConfig.resolver.nodeModulesPaths = [
-    path.resolve(projectRoot, "node_modules"),
-    path.resolve(workspaceRoot, "node_modules"),
-  ];
+	// #2 - Resolve modules within the project's `node_modules` first, then all monorepo modules
+	innerConfig.resolver.nodeModulesPaths = [
+		path.resolve(projectRoot, "node_modules"),
+		path.resolve(workspaceRoot, "node_modules"),
+	];
 
-  return innerConfig;
+	return innerConfig;
 }
 
 /**
@@ -53,8 +53,8 @@ function withMonorepoPaths(innerConfig) {
  * @returns {import('expo/metro-config').MetroConfig}
  */
 function withTurborepoManagedCache(metroConfig) {
-  metroConfig.cacheStores = [
-    new FileStore({ root: path.join(__dirname, ".cache/metro") }),
-  ];
-  return metroConfig;
+	metroConfig.cacheStores = [
+		new FileStore({ root: path.join(__dirname, ".cache/metro") }),
+	];
+	return metroConfig;
 }
