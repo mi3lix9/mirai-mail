@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
@@ -18,10 +18,9 @@
       "!**/routeTree.gen.ts",
       "!**/src-tauri",
       "!**/.nuxt",
-      "!bts.jsonc",
-      "!**/.expo",
-      "!**/.wrangler"
-    ]
+      "!bts.jsonc"
+    ],
+    "experimentalScannerIgnores": [".expo/"]
   },
   "formatter": {
     "enabled": true,
@@ -42,6 +41,8 @@
         "useExhaustiveDependencies": "info"
       },
       "nursery": {
+        "useParseIntRadix": "off",
+        "noUnknownAtRule": "off",
         "useSortedClasses": {
           "level": "warn",
           "fix": "safe",
@@ -51,7 +52,15 @@
         }
       },
       "style": {
+        "useBlockStatements": "off",
         "noParameterAssign": "error",
+        "noNonNullAssertion": "warn",
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "filenameCases": ["kebab-case", "export"]
+          }
+        },
         "useAsConstAssertion": "error",
         "useDefaultParameterLast": "error",
         "useEnumInitializers": "error",
@@ -61,6 +70,12 @@
         "useNumberNamespace": "error",
         "noInferrableTypes": "error",
         "noUselessElse": "error"
+      },
+      "performance": {
+        "noNamespaceImport": "off"
+      },
+      "suspicious": {
+        "noEmptyBlockStatements": "warn"
       }
     }
   },
