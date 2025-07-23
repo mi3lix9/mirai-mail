@@ -1,4 +1,5 @@
 pre-commit:
+  exclude: ".expo/**"
   commands:
     format:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
@@ -9,6 +10,7 @@ pre-commit:
       # stage_fixed: true
 
 pre-push:
+  exclude: ".expo/**"
   commands:
     format:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
