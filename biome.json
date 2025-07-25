@@ -52,6 +52,7 @@
         }
       },
       "style": {
+        "useTemplate": "off",
         "useBlockStatements": "off",
         "noParameterAssign": "error",
         "noNonNullAssertion": "warn",
