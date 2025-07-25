@@ -17,8 +17,11 @@ function RouteComponent() {
 		<div className="p-4">
 			<h1 className="font-bold text-2xl">{email.subject}</h1>
 			<p className="text-muted-foreground">{email.from}</p>
-			{/** biome-ignore lint/security/noDangerouslySetInnerHtml: email body */}
-			<article dangerouslySetInnerHTML={{ __html: email.body ?? "" }} />
+			<article
+				className="bg-white"
+				/** biome-ignore lint/security/noDangerouslySetInnerHtml: email body */
+				dangerouslySetInnerHTML={{ __html: email.body ?? "" }}
+			/>
 		</div>
 	);
 }

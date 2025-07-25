@@ -144,7 +144,7 @@ export default function SignInForm({
 							{
 								provider: "google",
 
-								callbackURL: "/dashboard",
+								callbackURL: "http://localhost:3001/dashboard",
 							},
 
 							{
